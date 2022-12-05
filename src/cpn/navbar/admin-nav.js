@@ -9,7 +9,7 @@ export default () =>{
 
     const [ drawer, setDrawer ] = useState(0);
 
-    const signoutRequest = () =>{
+    const signoutRequest = () => {
         fetch('/api/signout').then( res => res.json() ).then( (data) => {
             window.location = '/login';
         })
@@ -36,7 +36,7 @@ export default () =>{
                 </div>
 
                 <div className="item">
-                    <div className="sign-out" onClick = { signoutRequest }>
+                    <div className="sign-out" onClick= { signoutRequest }>
                         <img src="/images/utils/signout.png"/>
                     </div>
                 </div>
@@ -54,8 +54,8 @@ export default () =>{
                                 </div>
                             </div>
                             <div className="user-info">
-                                <span className="name">{customer_info.fullname}</span>
-                                <span className="email">{customer_info.email}</span>
+                                <span className="name">Administrator</span>
+                                <span className="email">administrator@sakila.com</span>
                             </div>
                             <div className="close-toggle" onClick={ ()=>{ setDrawer( !drawer ) } }>
                                 <span />
@@ -65,27 +65,14 @@ export default () =>{
                         <div className="menu-list">
                             <div className="items">
                                 <div className="item">
-                                    <a href="/films" className="link">Latest films</a>
+                                    <a href="/admin/films" className="link">Films</a>
                                 </div>
                                 <div className="item">
-                                    <a href="/category" className="link">Category</a>
-                                </div>
-                                <div className="item">
-                                    <a href="/qrcanner" className="link">QR Checkin</a>
+                                    <a href="/admin/category" className="link">Category</a>
                                 </div>
                                 <hr/>
                                 <div className="item">
-                                    <a href="/settings" className="link">Setting</a>
-                                </div>
-                                <div className="item">
-                                    <a href="/help" className="link">Help</a>
-                                </div>
-                                <hr/>
-                                <div className="item">
-                                    <a href="/about" className="link">About</a>
-                                </div>
-                                <div className="item">
-                                    <a href="/contact" className="link">Contact</a>
+                                    <a href="/admin/settings" className="link">Setting</a>
                                 </div>
                             </div>
                         </div>

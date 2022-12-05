@@ -13,14 +13,17 @@ code {
 
 .app{
     width: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
+    background: #fafafa;
 }
 
 
 textarea{
-     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
-}
+       font-family: "Great Vibes", cursive !important;
+       resize: vertical;
+ }
 
 *{
     box-sizing: border-box;

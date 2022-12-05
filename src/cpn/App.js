@@ -3,16 +3,39 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Login from './portal';
 import Navbar from './navbar/customer-nav';
 
+import AdminHome from './admin/index';
+import AdminNavbar from './navbar/admin-nav';
+import AdminFilms from './admin/films';
+import AdminFilmCreate from './admin/filmcreate';
+import axios from 'axios';
 
 import '../css/index.scss';
 
 function App() {
-  return (
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        fetch('/api/session/retrieve')
+        .then( res => res.json() )
+        .then( (data) =>{
+
+            const { sessionCredential, customer_info, session } = data;
+            sessionCredential.session = session;
+            console.log( { sessionCredential, customer_info, session })
+            dispatch({
+                type: 'session/retrieve',
+                payload: { sessionCredential, customer_info},
+            })
+        } )
+    }, []);
+
+    return (
         <div>
             <Router>
                 <Routes>
@@ -21,6 +44,9 @@ function App() {
                             <Login />
                         </React.StrictMode>
                     }/>
+
+                    {/* CUSTOMER ROUTER */}
+
                     <Route exac path = '/' element={
                         <React.StrictMode>
                             <Navbar />
@@ -29,9 +55,34 @@ function App() {
                     }/>
                     <Route exac path = '/about' element={
                         <React.StrictMode>
+                            <Navbar />
                             <h1>About</h1>
                         </React.StrictMode>
                     }/>
+
+                    {/* ADMIN ROUTER */}
+
+                    <Route exac path = '/admin' element={
+                        <React.StrictMode>
+                            <AdminNavbar />
+                            <AdminHome />
+                        </React.StrictMode>
+                    }/>
+
+                    <Route exac path = '/admin/films' element={
+                        <React.StrictMode>
+                            <AdminNavbar />
+                            <AdminFilms />
+                        </React.StrictMode>
+                    }/>
+
+                    <Route exac path = '/admin/film/create' element={
+                        <React.StrictMode>
+                            <AdminNavbar />
+                            <AdminFilmCreate />
+                        </React.StrictMode>
+                    }/>
+
                 </Routes>
             </Router>
         </div>

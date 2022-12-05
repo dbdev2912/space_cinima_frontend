@@ -4,6 +4,7 @@
     padding: 12px 8px;
     border-bottom: 1px solid #990000;
     position: relative;
+    background: #fff;
 
     .nav-items{
         display: flex;
@@ -157,6 +158,45 @@
                             border-right: none;
                             transform: rotate(45deg);
                             cursor: pointer;
+                        }
+                    }
+                }
+
+
+                .menu-list{
+                    width: 100%;
+                    margin-top: 48px;
+                    background: rgba(255,255,255,0.75);
+                    padding: 48px 0;
+                    .items{
+                        display: flex;
+                        flex-direction: column;
+
+                        .item{
+                            display: block;
+
+                            transition: ease-in-out 0.25s;
+                            cursor: pointer;
+
+                            .link{
+
+                                padding: 8px 12px;
+                                text-decoration: none;
+                                color: #000;
+                                display: block;
+                                font-weight: 500;
+                                font-size: 20px;
+                            }
+
+                            &:hover{
+                                background-color: #fff;
+                            }
+                        }
+                        hr{
+                            display: block;
+                            width: 100%;
+                            margin: 12px 0;
+
                         }
                     }
                 }
