@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
+
+import HiddenBox from './hiddenbox';
 
 export default () => {
 
     const [ img, setImgae ] = useState("");
-
     const [ film, setFilm ] = useState({});
+
+    const [ cats, setCats ] = useState([]);
+    const [ hiddenBox, setBoxState ] = useState(false);
+
+    useEffect( () => {
+        fetch('/api/cats').then( res => res.json() )
+        .then( (data) => {
+            const { cats } = data;
+            setCats(cats);
+        })
+    }, []);
+
 
     const chosingImage = () => {
         $('#file-input').click()
@@ -24,6 +37,10 @@ export default () => {
         }
     }
 
+    const hiddenBoxSwitching = () => {
+        setBoxState( !hiddenBox )
+    }
+
     const submit = () =>{
         fetch('/api/new/film', {
             method: 'post',
@@ -33,8 +50,35 @@ export default () => {
             body: JSON.stringify({ film, img })
         }).then( res => res.json() )
         .then( (data) => {
-            console.log(data);
+            /* for future scaling: Do something if needed*/
         });
+    }
+
+    const catChosing = (id) => {
+        const cat = cats.filter( cate => cate.id === id )[0];
+
+        const index  = cats.indexOf( cat );
+        cat.isChosen = !cat.isChosen;
+        let newData = cats;
+        newData[index] = cat;
+        setCats(newData);
+    }
+
+    const submitChosen = () => {
+        const chosen = cats.filter(cat => cat.isChosen === true);
+
+        let categoriesString = "";
+        const chosenCates = [];
+
+        for( let i = 0; i < chosen.length; i++ ){
+            categoriesString += `${ chosen[i].name }, `;
+            chosenCates.push( chosen[i].name )
+        }
+
+        categoriesString = categoriesString.slice(0, categoriesString.length - 2);
+
+        setFilm({ ...film, categories_string: categoriesString, categories: chosenCates });
+        setBoxState( !hiddenBox );
     }
 
     return(
@@ -51,6 +95,11 @@ export default () => {
                     <div className="form-field">
                         <label className="label">Film title</label>
                         <input className="input" type="text" spellCheck="false" value={film.title} onChange={ (e) => { setFilm({...film, title: e.target.value}) } }/>
+                    </div>
+
+                    <div className="form-field">
+                        <label className="label">Categories</label>
+                        <input className="input" type="text" spellCheck="false" value={film.categories_string} onFocus = { hiddenBoxSwitching }/>
                     </div>
 
                     <div className="form-field">
@@ -106,8 +155,10 @@ export default () => {
                     <button onClick = { submit }>Commit</button>
                 </div>
             </div>
-
-
+            { hiddenBox ?
+                <HiddenBox categories={ cats } catChosing={ catChosing } submitChosen={ submitChosen }/>
+            : null
+            }
         </div>
     )
 }

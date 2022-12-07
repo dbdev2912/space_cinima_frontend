@@ -15,6 +15,20 @@ export default () => {
         });
     }, []);
 
+    const deleteRequest = ( id ) => {
+        const newData = films.filter( cat => cat.film_id !== id );
+        setFilms(newData);
+
+        fetch('/api/film/remove', {
+            method: "post",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify( { id } ),
+        }).then( res => res.json() )
+        .then( (data) => {
+            /* Do something if successfully deleted the item */
+        })
+    }
+
     return(
         <div className="table-view">
             <div className="header-bar">
@@ -30,10 +44,10 @@ export default () => {
 
                     <thead className ="thead">
                         <th className="field">
-                            <span>Film ID</span>
+                            <span>Film title</span>
                         </th>
                         <th className="field">
-                            <span>Film title</span>
+                            <span>Category</span>
                         </th>
                         <th className="field">
                             <span>Description</span>
@@ -61,8 +75,8 @@ export default () => {
 
                     {films && films.map( film =>
                         <tr key={ film.film_id }>
-                            <td>{film.film_id}</td>
                             <td>{film.title}</td>
+                            <td>{film.categories_string}</td>
                             <td>{film.description}</td>
                             <td>{film.release_year}</td>
                             <td>{film.language}</td>
@@ -70,6 +84,9 @@ export default () => {
                             <td>{film.rental_rate}</td>
                             <td>{film.length} minutes</td>
                             <td>{film.rating}</td>
+                            <td className="icon" onClick={ () => { deleteRequest(film.film_id) } }>
+                                <img src="/images/utils/close.png"/>
+                            </td>
                         </tr>
                     )}
                     </tbody>

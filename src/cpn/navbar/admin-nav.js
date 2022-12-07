@@ -68,7 +68,7 @@ export default () =>{
                                     <a href="/admin/films" className="link">Films</a>
                                 </div>
                                 <div className="item">
-                                    <a href="/admin/category" className="link">Category</a>
+                                    <a href="/admin/categories" className="link">Category</a>
                                 </div>
                                 <hr/>
                                 <div className="item">

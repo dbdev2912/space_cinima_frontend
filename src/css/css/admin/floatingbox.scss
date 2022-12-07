@@ -1,0 +1,112 @@
+.floating-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    .box{
+        position: relative;
+        z-index: 2;
+
+        width: 100%;
+        max-width: 448px;
+
+        height: 50vh;
+        background: #fff;
+        padding: 0px 12px;
+
+        .header{
+            margin: 12px;
+
+            span{
+                text-align: center;
+            }
+
+            .title{
+                display: block;
+                text-transform: uppercase;
+                font-size: 24px;
+            }
+
+            .mini-title{
+                font-size: 16px;
+                display: block;
+
+                .link{
+                    color: #990000;
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+        .scroll-box{
+            height: fill-available;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar{
+                display: none;
+            }
+
+            .items{
+
+                .item{
+                    display: flex;
+                    padding: 8px 12px;
+                    cursor: pointer;
+                    padding: 8px 12px;
+                    transition: 0.25s ease-in-out;
+
+                    &:hover{
+                        background: #ccc;
+                    }
+
+                    .name{
+                        font-size: 18px;
+                    }
+
+                    .icon{
+                        margin-left : auto;
+                        div{
+                            display: block;
+                            width: 18px;
+                            height: 18px;
+                            border: 1px solid blue;
+                            border-radius: 50%;
+
+                            span{
+                                display: block;
+                                width: 12px;
+                                height: 12px;
+                                background: blue;
+                                border-radius: 50%;
+                                margin: 2px;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    .bg{
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        top: 0;
+        left: 0;
+        // background-image: url(../../media/floating-bg-1.png);
+        // background-position: center;
+        // background-repeat: no-repeat;
+        // background-size: cover;
+        // opacity: 0.25;
+        background: rgba(0,0,0,0.5);
+    }
+}

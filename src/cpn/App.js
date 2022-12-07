@@ -12,6 +12,11 @@ import AdminHome from './admin/index';
 import AdminNavbar from './navbar/admin-nav';
 import AdminFilms from './admin/films';
 import AdminFilmCreate from './admin/filmcreate';
+
+
+import AdminCates from './admin/cates';
+import AdminCatesCreate from './admin/catescreate';
+
 import axios from 'axios';
 
 import '../css/index.scss';
@@ -27,7 +32,6 @@ function App() {
 
             const { sessionCredential, customer_info, session } = data;
             sessionCredential.session = session;
-            console.log( { sessionCredential, customer_info, session })
             dispatch({
                 type: 'session/retrieve',
                 payload: { sessionCredential, customer_info},
@@ -76,10 +80,24 @@ function App() {
                         </React.StrictMode>
                     }/>
 
+                    <Route exac path = '/admin/categories' element={
+                        <React.StrictMode>
+                            <AdminNavbar />
+                            <AdminCates />
+                        </React.StrictMode>
+                    }/>
+
                     <Route exac path = '/admin/film/create' element={
                         <React.StrictMode>
                             <AdminNavbar />
                             <AdminFilmCreate />
+                        </React.StrictMode>
+                    }/>
+
+                    <Route exac path = '/admin/categories/create' element={
+                        <React.StrictMode>
+                            <AdminNavbar />
+                            <AdminCatesCreate />
                         </React.StrictMode>
                     }/>
 

@@ -41,6 +41,9 @@
         padding: 8px 12px;
         border: 1px solid #ccc;
 
+        .table{
+            width: 100%;
+        }
 
         thead{
             .field{
@@ -54,6 +57,23 @@
                 td{
                     padding: 8px 12px;
                     border-top: 1px solid #ccc;
+                }
+
+                .icon{
+                    margin-left: auto;
+                    cursor: pointer;
+
+                    img{
+                        transition: 0.25s ease-in;
+                        opacity: 0;
+                        width: 20px;
+                    }
+
+                }
+                &:hover{
+                    img{
+                        opacity: 1;
+                    }
                 }
             }
         }
