@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 
+import FloatingListItem from './floating_list_item';
+
 export default (props) => {
     const { categories, catChosing, submitChosen } = props;
 
@@ -24,24 +26,12 @@ export default (props) => {
                     <div className="items" id="items">
                         { categories && categories.map(
                             cat =>
-                            <div className="item" key={ cat.id } onClick={ () => { catChosing( cat.id ) } }>
-                                <div className="name">
-                                    <span>{ cat.name }</span>
-                                </div>
-                                <div className="icon">
-                                    <div>
-                                        { cat.isChosen ?
-                                            <span />
-                                            : null
-                                        }
-                                    </div>
-                                </div>
-                            </div>
+                            <FloatingListItem cat={cat} parentCatChosing={ catChosing }/>
                         ) }
                     </div>
                 </div>
             </div>
-            <div className="bg" onClick = { submitChosen }>
+            <div className="bg" onClick = { submitChosen } >
             </div>
         </div>
     );

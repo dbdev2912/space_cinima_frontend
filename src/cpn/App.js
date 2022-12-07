@@ -6,7 +6,10 @@ import {
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Login from './portal';
+
 import Navbar from './navbar/customer-nav';
+import LatestFilms from './user/latestfilms';
+
 
 import AdminHome from './admin/index';
 import AdminNavbar from './navbar/admin-nav';
@@ -57,12 +60,23 @@ function App() {
                             <h1>Home</h1>
                         </React.StrictMode>
                     }/>
+
+                    <Route exac path = '/films' element={
+                        <React.StrictMode>
+                            <Navbar />
+                            <LatestFilms />
+                        </React.StrictMode>
+                    }/>
+
                     <Route exac path = '/about' element={
                         <React.StrictMode>
                             <Navbar />
                             <h1>About</h1>
                         </React.StrictMode>
                     }/>
+
+
+
 
                     {/* ADMIN ROUTER */}
 

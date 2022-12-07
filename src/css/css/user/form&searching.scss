@@ -1,0 +1,208 @@
+.container{
+    width: 80%;
+    max-width: 1280px;
+    margin: auto;
+    margin-top: 12px;
+
+    .search-bar{
+        position: relative;
+        width: 100%;
+        max-width: 765px;
+        margin: auto;
+        border-bottom: 1px solid #990000;
+        background: #fff;
+
+        .submit-search{
+            background-image: linear-gradient(to bottom, #ff6600, #990000);
+            color: #fff;
+            display: block;
+            text-align: center;
+            padding: 8px 12px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 12px;
+            margin: auto;
+            margin-top: 24px;
+        }
+
+        .search{
+            width: 100%;
+
+            input{
+                width: 100%;
+                border: none;
+
+                padding: 8px 12px;
+                text-align: center;
+                outline: none;
+            }
+        }
+
+        .icons{
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            display: flex;
+            flex-wrap: nowrap;
+
+
+            .icon{
+                width: 24px;
+                margin: 8px;
+                cursor: pointer;
+
+                img{
+                    width: 100%;
+                }
+            }
+        }
+
+        .advanced-search{
+            height: 500px;
+            transition: ease-in-out 0.5s;
+            overflow: hidden;
+
+            .search-list{
+
+                .list-title{
+                    font-size: 20px;
+                    display: block;
+                    text-align: center;
+                    margin-top: 24px;
+                }
+
+                .input-bar{
+                    input{
+                        width: 100%;
+                        border: none;
+                        border-bottom: 1px solid #ccc;
+                        padding: 8px 12px;
+                        text-align: center;
+                        outline: none;
+                    }
+                }
+                .items{
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 100%;
+
+                    .item{
+                        width: 30%;
+                        margin: auto;
+                        min-width: 135px;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        cursor: pointer;
+
+                        .content{
+                            padding: 8px 12px;
+                        }
+
+                        .icon{
+                            padding: 12px 12px;
+
+                            div{
+                                display: block;
+                                width: 18px;
+                                height: 18px;
+                                border: 1px solid blue;
+                                border-radius: 50%;
+
+                                span{
+                                    display: block;
+                                    width: 12px;
+                                    height: 12px;
+                                    background: blue;
+                                    border-radius: 50%;
+                                    margin: 2px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .hide{
+            height: 0;
+        }
+
+        .show{
+            height: 500px;
+        }
+
+    }
+
+
+    .film-list{
+
+        .films{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .box{
+                width: 96%;
+                margin: 4%;
+                max-width: 300px;
+
+                span{
+                    padding: 12px;
+                }
+            }
+            .film{
+                border-radius: 12px;
+                border: 1px solid #ccc;
+                box-shadow: 1px 5px 10px 5px #ccc;
+
+                .header-img{
+                    img{
+                        width: 100%;
+                        border-radius: 12px 12px 0 0;
+                    }
+                }
+
+                .film-info{
+                    .title{
+                        display: block;
+                        text-align: center;
+                        font-size: 24px;
+                        font-weight: bold;
+                    }
+                    .description{
+                        display: block;
+                        text-align: center;
+                        font-size: 16px;
+                    }
+                }
+
+                .utils{
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: nowrap;
+
+                    .util{
+                        background-image: linear-gradient(#990000, #990000);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 50%;
+                        font-size: 20px;
+                        color: #fff;
+                        cursor: pointer;
+                        transition: ease-in-out 0.25s;
+                        &:hover{
+                            background-image: linear-gradient(#ff6655, #990000);
+                        }
+
+                    }
+                }
+            }
+        }
+
+
+    }
+}

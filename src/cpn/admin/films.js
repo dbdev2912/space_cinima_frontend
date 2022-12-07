@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import dateFormater from '../useful_modules/date_formater';
+
 export default () => {
 
     const [ films, setFilms ] = useState([]);
@@ -56,6 +58,9 @@ export default () => {
                             <span>Release year</span>
                         </th>
                         <th className="field">
+                            <span>Release schedule</span>
+                        </th>
+                        <th className="field">
                             <span>Language</span>
                         </th>
                         <th className="field">
@@ -79,6 +84,7 @@ export default () => {
                             <td>{film.categories_string}</td>
                             <td>{film.description}</td>
                             <td>{film.release_year}</td>
+                            <td>{dateFormater(film.release_schedule)}</td>
                             <td>{film.language}</td>
                             <td>{film.rental_duration}</td>
                             <td>{film.rental_rate}</td>

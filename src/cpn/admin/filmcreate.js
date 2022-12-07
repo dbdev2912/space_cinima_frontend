@@ -26,7 +26,6 @@ export default () => {
 
     const fileChange = (e) =>{
         const file = e.target.files[0];
-        console.log(file);
         if(file){
             const reader = new FileReader();
 
@@ -110,6 +109,11 @@ export default () => {
                     <div className="form-field">
                         <label className="label">Release year</label>
                         <input className="input" type="text" spellCheck="false" value={film.release_year} onChange={ (e) => { setFilm({...film, release_year: e.target.value}) } }/>
+                    </div>
+
+                    <div className="form-field">
+                        <label className="label">Release Schedule</label>
+                        <input className="input" type="date" value={film.release_schedule} onChange={ (e) => { setFilm({...film, release_schedule: e.target.value}) } }/>
                     </div>
 
                     <div className="form-field">
