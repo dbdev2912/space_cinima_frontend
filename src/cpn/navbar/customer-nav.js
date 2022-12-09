@@ -68,7 +68,7 @@ export default () =>{
                                     <a href="/films" className="link">Latest films</a>
                                 </div>
                                 <div className="item">
-                                    <a href="/category" className="link">Category</a>
+                                    <a href="/categories" className="link">Category</a>
                                 </div>
                                 <div className="item">
                                     <a href="/qrcanner" className="link">QR Checkin</a>

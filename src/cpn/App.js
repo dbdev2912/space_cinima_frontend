@@ -9,7 +9,8 @@ import Login from './portal';
 
 import Navbar from './navbar/customer-nav';
 import LatestFilms from './user/latestfilms';
-
+import FilmDetail from './user/filmdetail';
+import Categories from './user/categories';
 
 import AdminHome from './admin/index';
 import AdminNavbar from './navbar/admin-nav';
@@ -65,6 +66,20 @@ function App() {
                         <React.StrictMode>
                             <Navbar />
                             <LatestFilms />
+                        </React.StrictMode>
+                    }/>
+
+                    <Route exac path = '/film/:id' element={
+                        <React.StrictMode>
+                            <Navbar />
+                            <FilmDetail />
+                        </React.StrictMode>
+                    }/>
+
+                    <Route exac path = '/categories' element={
+                        <React.StrictMode>
+                            <Navbar />
+                            <Categories />
                         </React.StrictMode>
                     }/>
 

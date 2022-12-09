@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-
+import $ from 'jquery';
 import SearchItem from './search_list_item';
+
+import Film from './film';
 
 export default () =>{
 
@@ -14,8 +16,12 @@ export default () =>{
     const [ searchString, setSearchString ] = useState("");
 
     const [ page, setPage ] = useState(0);
+    const [ maxIndex, setMaxIndex ] = useState(0);
     const [ displayFilms, setDisplay ] = useState([])
-    const limit = 6
+
+
+    const limit = 3;
+
     const advancedSwitching = () =>{
         setSwitcher( !switcher )
     }
@@ -33,7 +39,9 @@ export default () =>{
             const { films } = data;
             films.sort( (f1, f2) => f1.release_schedule >= f2.release_schedule ? -1 : 1 );
             setFilms(films);
-            setDisplay(films.slice(0, limit))
+            setDisplay(films.slice(0, limit));
+            setPage(1);
+            setMaxIndex(Math.ceil(films.length / limit ) )
         } );
     }, [])
 
@@ -69,6 +77,13 @@ export default () =>{
         .then( (data) =>  {
             console.log(data)
         })
+    }
+
+
+    const toPage = (index) => {
+        setDisplay(films.slice((index - 1)*limit, index * limit));
+        setPage(index);
+        $(window).scrollTop(0);
     }
 
     return(
@@ -117,27 +132,24 @@ export default () =>{
             </div>
             <div className="film-list">
                 <div className="films">
-                { films && films.map( film =>
-                    <div className="box">
-                        <div className="film">
-                            <div className="header-img">
-                                <img src={ film.img }/>
-                            </div>
-                            <div className="film-info">
-                                <span className="title">{ film.title }</span>
-                                <span className="description">{film.description}</span>
-                            </div>
-                            <div className="utils">
-                                <div className="util">
-                                    <span>Get ticket</span>
-                                </div>
-                                <div className="util">
-                                    <span>Save</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                { displayFilms && displayFilms.map( film =>
+                    <Film film={film} key={ film.film_id }/>
                 )}
+                </div>
+                <div className="seperator">
+                    <div className="btn-group">
+                        <button onClick={ ()=> { toPage(1) } }><span className="prev"/><span className="prev"/></button>
+                        { page !== 1 ?
+                            <button onClick={ ()=> { toPage(page - 1) } }><span className="prev"/></button>
+                            : null
+                        }
+                        <button>{ page }</button>
+                        { page !== maxIndex ?
+                            <button onClick={ ()=> { toPage(page + 1) } }><span className="next"/></button>
+                            : null
+                        }
+                        <button onClick={ ()=> { toPage(maxIndex) } }><span className="next"/><span className="next"/></button>
+                    </div>
                 </div>
             </div>
         </div>
