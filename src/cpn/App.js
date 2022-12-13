@@ -16,7 +16,7 @@ import AdminHome from './admin/index';
 import AdminNavbar from './navbar/admin-nav';
 import AdminFilms from './admin/films';
 import AdminFilmCreate from './admin/filmcreate';
-
+import AdminFilmQR from './admin/filmqr';
 
 import AdminCates from './admin/cates';
 import AdminCatesCreate from './admin/catescreate';
@@ -106,6 +106,13 @@ function App() {
                         <React.StrictMode>
                             <AdminNavbar />
                             <AdminFilms />
+                        </React.StrictMode>
+                    }/>
+
+                    <Route exac path = '/admin/film/:id/qr' element={
+                        <React.StrictMode>
+                            <AdminNavbar />
+                            <AdminFilmQR />
                         </React.StrictMode>
                     }/>
 

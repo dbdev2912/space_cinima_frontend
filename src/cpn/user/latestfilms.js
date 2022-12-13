@@ -20,7 +20,7 @@ export default () =>{
     const [ displayFilms, setDisplay ] = useState([])
 
 
-    const limit = 3;
+    const limit = 6;
 
     const advancedSwitching = () =>{
         setSwitcher( !switcher )

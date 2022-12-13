@@ -46,6 +46,9 @@ export default () => {
 
                     <thead className ="thead">
                         <th className="field">
+                            <span>Film id</span>
+                        </th>
+                        <th className="field">
                             <span>Film title</span>
                         </th>
                         <th className="field">
@@ -80,6 +83,7 @@ export default () => {
 
                     {films && films.map( film =>
                         <tr key={ film.film_id }>
+                            <td>{film.film_id}</td>
                             <td>{film.title}</td>
                             <td>{film.categories_string}</td>
                             <td>{film.description}</td>
